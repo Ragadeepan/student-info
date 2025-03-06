@@ -1,1 +1,117 @@
-haii
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Info Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #00008B, #6A5ACD, #FF4500, #32CD32, #FFD700);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            text-align: center;
+            padding: 20px;
+            transition: background 0.5s;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        body:hover {
+            background: linear-gradient(45deg, #8A2BE2, #DC143C, #FF8C00, #20B2AA, #00FF7F);
+            background-size: 400% 400%;
+            animation: gradientHover 5s ease infinite;
+        }
+        
+        @keyframes gradientHover {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .student-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .student {
+            background: #fff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Information Form</h2>
+        <input type="text" id="name" placeholder="Enter Name" required>
+        <input type="text" id="roll" placeholder="Enter Roll Number" required>
+        <input type="email" id="email" placeholder="Enter Email" required>
+        <input type="text" id="phone" placeholder="Enter Phone Number" required>
+        <button onclick="addStudent()">Submit</button>
+    </div>
+    
+    <div class="container student-list">
+        <h3>Student List</h3>
+        <div id="studentData"></div>
+    </div>
+    
+    <script>
+        function addStudent() {
+            let name = document.getElementById("name").value;
+            let roll = document.getElementById("roll").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            
+            if(name === "" || roll === "" || email === "" || phone === "") {
+                alert("Please fill all fields");
+                return;
+            }
+            
+            let studentData = document.getElementById("studentData");
+            let newStudent = document.createElement("div");
+            newStudent.classList.add("student");
+            newStudent.innerHTML = `<strong>Name:</strong> ${name} <br> 
+                                    <strong>Roll No:</strong> ${roll} <br> 
+                                    <strong>Email:</strong> ${email} <br> 
+                                    <strong>Phone:</strong> ${phone}`;
+            studentData.appendChild(newStudent);
+            
+            document.getElementById("name").value = "";
+            document.getElementById("roll").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("phone").value = "";
+        }
+    </script>
+</body>
+</html>
